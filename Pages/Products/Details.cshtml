@@ -1,0 +1,30 @@
+﻿@page
+@model GestionProduit.Pages.Products.DetailsModel
+
+@{
+    ViewData["Title"] = "Détails du Produit";
+}
+
+<div class="product-details">
+    <h1>@Model.Product.Name</h1>
+
+    <div class="product-image">
+        <img src="@Url.Content(Model.Product.Image)" alt="Image du Produit" style="width: 200px; height: 200px;" />
+    </div>
+
+    <dl>
+        <dt>Description:</dt>
+        <dd>@Model.Product.Description</dd>
+
+        <dt>Stock:</dt>
+        <dd>@Model.Product.Stock</dd>
+
+        <dt>Prix:</dt>
+        <dd>@Model.Product.Price</dd>
+    </dl>
+
+    <div class="btn-group">
+        <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.Product?.IdProd">Modifier</a>
+        <a class="btn btn-secondary" asp-page="./Index">Retour à la Liste</a>
+    </div>
+</div>

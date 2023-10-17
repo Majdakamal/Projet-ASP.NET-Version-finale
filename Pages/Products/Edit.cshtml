@@ -1,0 +1,65 @@
+﻿@page
+@model GestionProduit.Pages.Products.EditModel
+
+@{
+    ViewData["Title"] = "Éditer";
+}
+
+<div class="container">
+    <h1 class="my-4">Éditer le Produit</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Product.IdProd" />
+
+                <div class="form-group">
+                    <label for="ProductName">Nom du Produit</label>
+                    <input asp-for="Product.Name" class="form-control" id="ProductName" />
+                    <span asp-validation-for="Product.Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductDescription">Description</label>
+                    <input asp-for="Product.Description" class="form-control" id="ProductDescription" />
+                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductStock">Stock</label>
+                    <input asp-for="Product.Stock" class="form-control" id="ProductStock" type="number" min="0" />
+                    <span asp-validation-for="Product.Stock" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Product.Image" class="control-label"></label>
+                    <input type="file" asp-for="NewImage" class="form-control" />
+                    <input type="hidden" asp-for="Product.Image" />
+                    <span asp-validation-for="Product.Image" class="text-danger"></span>
+
+
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductPrice">Prix</label>
+                    <input asp-for="Product.Price" class="form-control" id="ProductPrice" />
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-page="./Index" class="btn btn-secondary">Retour à la Liste</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
